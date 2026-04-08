@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>天津金鲁科技有限公司 - 新能源磁材与智能配电解决方案</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary: #0a1628;
+  --accent: #00d4ff;
+  --accent2: #0077ff;
+  --gold: #f5a623;
+  --text: #e8edf4;
+  --muted: #7a8fa6;
+  --surface: #0f2744;
+  --surface2: #162d52;
+  --border: rgba(0,212,255,0.15);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Noto Sans SC', sans-serif;
+  background: var(--primary);
+  color: var(--text);
+  overflow-x: hidden;
+  line-height: 1.7;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--primary); }
+::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 3px; }
+
+/* Nav */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  padding: 0 60px;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 72px;
+  background: rgba(10,22,40,0.85);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  transition: all 0.3s;
+}
+.nav.scrolled { background: rgba(10,22,40,0.97); height: 64px; }
+
+.nav-logo {
+  display: flex; align-items: center; gap: 14px;
+  text-decoration: none;
+}
+.nav-logo-icon {
+  width: 42px; height: 42px;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; font-weight: 900; color: #fff;
+}
+.nav-logo-text { font-size: 18px; font-weight: 700; color: #fff; letter-spacing: 1px; }
+.nav-logo-sub { font-size: 11px; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; }
+
+.nav-links { display: flex; gap: 8px; list-style: none; }
+.nav-links a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 14px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: all 0.25s;
+  letter-spacing: 0.5px;
+}
+.nav-links a:hover { color: var(--accent); background: rgba(0,212,255,0.08); }
+
+.nav-cta {
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  color: #fff !important;
+  font-weight: 600;
+  padding: 10px 24px !important;
+  border-radius: 8px !important;
+  font-size: 14px !important;
+}
+.nav-cta:hover { opacity: 0.88; background: linear-gradient(135deg, var(--accent), var(--accent2)) !important; }
+
+.menu-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
+.menu-toggle span { display: block; width: 22px; height: 2px; background: var(--accent); margin: 5px 0; transition: 0.3s; }
+
+/* Hero */
+.hero {
+  min-height: 100vh;
+  display: flex; align-items: center;
+  position: relative;
+  overflow: hidden;
+  padding: 0 60px;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background: 
+    radial-gradient(ellipse 80% 60% at 70% 40%, rgba(0,119,255,0.12) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 80% at 20% 80%, rgba(0,212,255,0.08) 0%, transparent 60%),
+    linear-gradient(180deg, var(--primary) 0%, #060e1e 100%);
+}
+.hero-grid {
+  position: absolute; inset: 0;
+  background-image: 
+    linear-gradient(rgba(0,212,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,212,255,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 80%);
+}
+.hero-particles {
+  position: absolute; inset: 0; overflow: hidden;
+}
+.particle {
+  position: absolute;
+  width: 3px; height: 3px;
+  background: var(--accent);
+  border-radius: 50%;
+  opacity: 0;
+  animation: floatUp 6s infinite;
+}
+@keyframes floatUp {
+  0% { opacity: 0; transform: translateY(100vh) scale(0); }
+  20% { opacity: 0.8; }
+  80% { opacity: 0.3; }
+  100% { opacity: 0; transform: translateY(-20vh) scale(1); }
+}
+
+.hero-content { position: relative; z-index: 2; max-width: 800px; }
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(0,212,255,0.1);
+  border: 1px solid rgba(0,212,255,0.25);
+  border-radius: 50px;
+  padding: 6px 18px;
+  font-size: 13px;
+  color: var(--accent);
+  letter-spacing: 1px;
+  margin-bottom: 28px;
+  animation: fadeUp 0.8s ease;
+}
+.hero-badge-dot {
+  width: 6px; height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+.hero h1 {
+  font-size: clamp(42px, 6vw, 76px);
+  font-weight: 900;
+  line-height: 1.1;
+  margin-bottom: 24px;
+  letter-spacing: -1px;
+  animation: fadeUp 0.8s ease 0.1s both;
+}
+.hero h1 .line2 {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 50%, var(--gold) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero-desc {
+  font-size: 18px;
+  color: var(--muted);
+  max-width: 600px;
+  line-height: 1.8;
+  margin-bottom: 40px;
+  animation: fadeUp 0.8s ease 0.2s both;
+}
+.hero-stats {
+  display: flex; gap: 48px; margin-bottom: 44px;
+  animation: fadeUp 0.8s ease 0.3s both;
+}
+.stat-item {}
+.stat-num {
+  font-size: 36px; font-weight: 900;
+  background: linear-gradient(135deg, var(--accent), #fff);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.stat-label { font-size: 13px; color: var(--muted); letter-spacing: 1px; margin-top: 2px; }
+
+.hero-actions { display: flex; gap: 16px; animation: fadeUp 0.8s ease 0.4s both; }
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  color: #fff; text-decoration: none;
+  padding: 14px 32px;
+  border-radius: 12px;
+  font-size: 15px; font-weight: 600;
+  transition: all 0.3s;
+  box-shadow: 0 8px 30px rgba(0,212,255,0.25);
+  cursor: pointer; border: none;
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(0,212,255,0.4); }
+.btn-ghost {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: rgba(255,255,255,0.05);
+  color: var(--text); text-decoration: none;
+  padding: 14px 32px;
+  border-radius: 12px;
+  font-size: 15px; font-weight: 500;
+  border: 1px solid var(--border);
+  transition: all 0.3s;
+}
+.btn-ghost:hover { background: rgba(0,212,255,0.08); border-color: rgba(0,212,255,0.4); }
+
+.hero-visual {
+  position: absolute; right: -60px; top: 50%; transform: translateY(-50%);
+  width: 55%; max-width: 700px;
+  animation: fadeUp 1s ease 0.3s both;
+}
+.hero-card {
+  background: rgba(15,39,68,0.7);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 36px;
+  backdrop-filter: blur(20px);
+}
+.hero-card-title { font-size: 13px; color: var(--accent); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; }
+.hex-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.hex-item {
+  aspect-ratio: 1;
+  background: linear-gradient(135deg, rgba(0,212,255,0.15), rgba(0,119,255,0.05));
+  border: 1px solid rgba(0,212,255,0.2);
+  border-radius: 10px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  font-size: 10px; color: var(--muted); text-align: center;
+  transition: all 0.3s;
+  cursor: default;
+}
+.hex-item:hover { background: rgba(0,212,255,0.2); border-color: rgba(0,212,255,0.5); transform: scale(1.05); }
+.hex-icon { font-size: 22px; margin-bottom: 4px; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Section base */
+section { padding: 100px 60px; position: relative; }
+.section-label {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 12px; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 16px;
+}
+.section-label::before {
+  content: ''; width: 30px; height: 1px; background: var(--accent);
+}
+.section-title {
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 800;
+  line-height: 1.15;
+  margin-bottom: 20px;
+}
+.section-desc { font-size: 17px; color: var(--muted); max-width: 620px; line-height: 1.8; }
+.section-header { margin-bottom: 60px; }
+
+/* About */
+.about { background: linear-gradient(180deg, #060e1e 0%, var(--primary) 100%); }
+.about-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start;
+}
+.about-text p { color: var(--muted); margin-bottom: 16px; font-size: 15px; }
+.about-values {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+}
+.value-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px;
+  transition: all 0.3s;
+}
+.value-card:hover { border-color: rgba(0,212,255,0.4); transform: translateY(-3px); }
+.value-icon { font-size: 28px; margin-bottom: 12px; }
+.value-title { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+.value-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+.about-visual {
+  position: relative;
+}
+.about-img-box {
+  background: linear-gradient(135deg, var(--surface), var(--surface2));
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 40px;
+  position: relative; overflow: hidden;
+}
+.about-img-box::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2), var(--gold));
+}
+.about-company-name {
+  font-size: 24px; font-weight: 900; margin-bottom: 8px;
+  background: linear-gradient(135deg, var(--accent), #fff);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.about-tagline { font-size: 15px; color: var(--muted); margin-bottom: 24px; }
+.about-highlights { list-style: none; }
+.about-highlights li {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 14px;
+  display: flex; align-items: center; gap: 12px;
+}
+.about-highlights li:last-child { border-bottom: none; }
+.about-highlights li::before {
+  content: '✓'; color: var(--accent); font-weight: 700;
+  width: 20px; height: 20px;
+  background: rgba(0,212,255,0.1);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; flex-shrink: 0;
+}
+
+.about-stat-row {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+  margin-top: 24px;
+}
+.about-stat {
+  text-align: center;
+  background: rgba(0,212,255,0.05);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px 10px;
+}
+.about-stat-num { font-size: 28px; font-weight: 900; color: var(--accent); }
+.about-stat-label { font-size: 11px; color: var(--muted); margin-top: 4px; }
+
+/* Products */
+.products { background: var(--primary); }
+.products-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+}
+.product-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: all 0.4s;
+  cursor: default;
+}
+.product-card:hover {
+  border-color: rgba(0,212,255,0.4);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3), 0 0 40px rgba(0,212,255,0.08);
+}
+.product-visual {
+  height: 200px;
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+.product-visual.bg-1 {
+  background: linear-gradient(135deg, #001a2e 0%, #002244 50%, #003366 100%);
+}
+.product-visual.bg-2 {
+  background: linear-gradient(135deg, #0a1a10 0%, #0d2818 50%, #103820 100%);
+}
+.product-visual.bg-3 {
+  background: linear-gradient(135deg, #1a0a20 0%, #280d30 50%, #361040 100%);
+}
+.product-visual.bg-4 {
+  background: linear-gradient(135deg, #0a0a1a 0%, #0d0d28 50%, #101040 100%);
+}
+.product-visual.bg-5 {
+  background: linear-gradient(135deg, #1a1000 0%, #281800 50%, #362000 100%);
+}
+.product-visual.bg-6 {
+  background: linear-gradient(135deg, #001a1a 0%, #002828 50%, #003636 100%);
+}
+.product-visual-icon {
+  font-size: 80px; opacity: 0.7;
+  position: relative; z-index: 2;
+}
+.product-visual::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: 
+    radial-gradient(circle at 30% 50%, rgba(0,212,255,0.15) 0%, transparent 60%),
+    radial-gradient(circle at 70% 30%, rgba(0,119,255,0.1) 0%, transparent 50%);
+}
+.product-body { padding: 28px; }
+.product-tag {
+  display: inline-block;
+  background: rgba(0,212,255,0.1);
+  border: 1px solid rgba(0,212,255,0.2);
+  color: var(--accent);
+  font-size: 11px;
+  padding: 4px 12px;
+  border-radius: 50px;
+  margin-bottom: 14px;
+  letter-spacing: 1px;
+}
+.product-title { font-size: 20px; font-weight: 700; margin-bottom: 10px; }
+.product-desc { font-size: 14px; color: var(--muted); line-height: 1.7; margin-bottom: 16px; }
+.product-features { list-style: none; }
+.product-features li {
+  font-size: 13px;
+  color: var(--muted);
+  padding: 6px 0;
+  display: flex; align-items: flex-start; gap: 8px;
+}
+.product-features li::before {
+  content: '›'; color: var(--accent); font-weight: 700; font-size: 16px; line-height: 1.2;
+}
+
+/* Market */
+.market { background: linear-gradient(180deg, var(--primary) 0%, #060e1e 50%, var(--primary) 100%); }
+.market-numbers {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;
+  margin-bottom: 60px;
+}
+.market-num-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 36px 24px;
+  text-align: center;
+  transition: all 0.3s;
+}
+.market-num-card:hover { border-color: rgba(0,212,255,0.4); transform: translateY(-4px); }
+.market-big-num {
+  font-size: 48px; font-weight: 900;
+  background: linear-gradient(135deg, var(--accent), var(--gold));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  line-height: 1;
+}
+.market-unit { font-size: 16px; color: var(--muted); font-weight: 400; }
+.market-num-label { font-size: 14px; color: var(--muted); margin-top: 8px; }
+.market-cagr { 
+  display: inline-block; 
+  background: rgba(245,166,35,0.1); border: 1px solid rgba(245,166,35,0.3);
+  color: var(--gold); font-size: 12px; padding: 4px 12px; border-radius: 50px;
+  margin-top: 12px;
+}
+
+.market-breakdown { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.market-section-title { font-size: 18px; font-weight: 700; margin-bottom: 20px; color: var(--text); }
+.market-bar-list { list-style: none; }
+.market-bar-item {
+  margin-bottom: 16px;
+}
+.market-bar-label { font-size: 13px; color: var(--muted); margin-bottom: 6px; display: flex; justify-content: space-between; }
+.market-bar-track {
+  height: 8px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.market-bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  transition: width 1s ease;
+}
+.market-bar-fill.gold { background: linear-gradient(90deg, var(--gold), #f7c948); }
+.market-bar-fill.purple { background: linear-gradient(90deg, #9b59b6, #8e44ad); }
+.market-bar-fill.green { background: linear-gradient(90deg, #2ecc71, #27ae60); }
+
+/* Tech */
+.tech { background: var(--primary); }
+.tech-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+.tech-compare table { width: 100%; border-collapse: collapse; }
+.tech-compare th {
+  background: var(--surface);
+  padding: 14px 16px;
+  text-align: left;
+  font-size: 13px; font-weight: 600;
+  border-bottom: 1px solid var(--border);
+  color: var(--muted);
+}
+.tech-compare td {
+  padding: 14px 16px;
+  font-size: 14px;
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+  color: var(--muted);
+}
+.tech-compare tr:hover td { background: rgba(0,212,255,0.03); }
+.tech-compare .highlight { color: var(--accent); font-weight: 600; }
+.tech-compare .gold { color: var(--gold); font-weight: 600; }
+.tech-compare .best { color: #2ecc71; font-weight: 700; }
+
+.tech-goals { }
+.tech-goal-item {
+  display: flex; gap: 20px;
+  padding: 24px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  margin-bottom: 16px;
+  transition: all 0.3s;
+}
+.tech-goal-item:hover { border-color: rgba(0,212,255,0.3); }
+.tech-goal-year {
+  font-size: 32px; font-weight: 900;
+  color: var(--accent);
+  line-height: 1;
+  min-width: 80px;
+}
+.tech-goal-year span { font-size: 12px; color: var(--muted); font-weight: 400; display: block; margin-top: 4px; }
+.tech-goal-content h4 { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+.tech-goal-content p { font-size: 13px; color: var(--muted); }
+
+/* Vision */
+.vision { 
+  background: linear-gradient(180deg, var(--primary) 0%, #060e1e 100%);
+  text-align: center;
+}
+.vision-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+  max-width: 1100px; margin: 0 auto;
+}
+.vision-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 40px 32px;
+  transition: all 0.4s;
+  text-align: center;
+}
+.vision-card:hover {
+  border-color: rgba(0,212,255,0.4);
+  transform: translateY(-8px);
+  box-shadow: 0 24px 60px rgba(0,0,0,0.3);
+}
+.vision-icon { font-size: 56px; margin-bottom: 20px; }
+.vision-title { font-size: 22px; font-weight: 800; margin-bottom: 12px; }
+.vision-desc { font-size: 14px; color: var(--muted); line-height: 1.7; }
+
+/* Roadmap */
+.roadmap { background: var(--primary); }
+.roadmap-timeline {
+  position: relative;
+  padding-left: 40px;
+}
+.roadmap-timeline::before {
+  content: '';
+  position: absolute; left: 8px; top: 0; bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, var(--accent), var(--accent2), var(--gold));
+}
+.roadmap-item {
+  position: relative;
+  margin-bottom: 40px;
+  padding: 28px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  transition: all 0.3s;
+}
+.roadmap-item:hover { border-color: rgba(0,212,255,0.4); }
+.roadmap-item::before {
+  content: '';
+  position: absolute; left: -36px; top: 32px;
+  width: 14px; height: 14px;
+  background: var(--accent);
+  border-radius: 50%;
+  border: 3px solid var(--primary);
+  box-shadow: 0 0 0 4px rgba(0,212,255,0.2);
+}
+.roadmap-quarter {
+  display: inline-block;
+  background: rgba(0,212,255,0.1);
+  border: 1px solid rgba(0,212,255,0.2);
+  color: var(--accent);
+  font-size: 12px; font-weight: 700;
+  padding: 4px 14px; border-radius: 50px;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+}
+.roadmap-item h4 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+.roadmap-item p { font-size: 14px; color: var(--muted); line-height: 1.7; }
+.roadmap-metrics { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 12px; }
+.roadmap-metric {
+  background: rgba(0,212,255,0.06);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 12px; color: var(--muted);
+}
+.roadmap-metric span { color: var(--accent); font-weight: 700; }
+
+/* Contact */
+.contact { background: linear-gradient(180deg, #060e1e 0%, var(--primary) 100%); }
+.contact-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
+}
+.contact-info { }
+.contact-item {
+  display: flex; gap: 16px;
+  padding: 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  margin-bottom: 14px;
+  transition: all 0.3s;
+}
+.contact-item:hover { border-color: rgba(0,212,255,0.3); }
+.contact-item-icon {
+  width: 44px; height: 44px;
+  background: rgba(0,212,255,0.1);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; flex-shrink: 0;
+}
+.contact-item-title { font-size: 12px; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 4px; }
+.contact-item-value { font-size: 15px; font-weight: 600; }
+.contact-form {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 40px;
+}
+.contact-form h3 { font-size: 22px; font-weight: 700; margin-bottom: 24px; }
+.form-group { margin-bottom: 16px; }
+.form-group label { display: block; font-size: 13px; color: var(--muted); margin-bottom: 6px; letter-spacing: 0.5px; }
+.form-group input, .form-group textarea, .form-group select {
+  width: 100%;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 16px;
+  color: var(--text);
+  font-size: 14px;
+  font-family: 'Noto Sans SC', sans-serif;
+  transition: all 0.3s;
+  outline: none;
+}
+.form-group input:focus, .form-group textarea:focus {
+  border-color: var(--accent);
+  background: rgba(0,212,255,0.04);
+  box-shadow: 0 0 0 3px rgba(0,212,255,0.08);
+}
+.form-group textarea { resize: vertical; min-height: 100px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.form-submit {
+  width: 100%;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  color: #fff;
+  border: none;
+  padding: 14px;
+  border-radius: 10px;
+  font-size: 15px; font-weight: 600;
+  cursor: pointer;
+  font-family: 'Noto Sans SC', sans-serif;
+  transition: all 0.3s;
+  letter-spacing: 1px;
+}
+.form-submit:hover { opacity: 0.88; transform: translateY(-1px); }
+
+/* Footer */
+.footer {
+  background: #030810;
+  border-top: 1px solid var(--border);
+  padding: 60px;
+}
+.footer-top {
+  display: flex; justify-content: space-between; align-items: start;
+  margin-bottom: 40px;
+}
+.footer-brand p { color: var(--muted); font-size: 13px; margin-top: 10px; max-width: 300px; line-height: 1.7; }
+.footer-links-group h4 { font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin-bottom: 16px; }
+.footer-links-group ul { list-style: none; }
+.footer-links-group li { margin-bottom: 8px; }
+.footer-links-group a { color: #4a6080; text-decoration: none; font-size: 13px; transition: 0.3s; }
+.footer-links-group a:hover { color: var(--accent); }
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.05);
+  padding-top: 24px;
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 12px; color: #2a3a50;
+}
+.footer-bottom a { color: #2a3a50; text-decoration: none; }
+.footer-bottom a:hover { color: var(--accent); }
+
+/* Animations */
+.reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* Responsive */
+@media (max-width: 1024px) {
+  section { padding: 80px 40px; }
+  .nav { padding: 0 30px; }
+  .hero { padding: 0 40px; }
+  .products-grid { grid-template-columns: 1fr 1fr; }
+  .about-grid { grid-template-columns: 1fr; }
+  .tech-grid { grid-template-columns: 1fr; }
+  .market-numbers { grid-template-columns: repeat(2, 1fr); }
+  .vision-grid { grid-template-columns: 1fr 1fr; }
+  .contact-grid { grid-template-columns: 1fr; }
+  .hero-visual { display: none; }
+}
+@media (max-width: 768px) {
+  section { padding: 60px 20px; }
+  .nav-links { display: none; }
+  .menu-toggle { display: block; }
+  .hero { padding: 0 20px; }
+  .products-grid { grid-template-columns: 1fr; }
+  .market-breakdown { grid-template-columns: 1fr; }
+  .vision-grid { grid-template-columns: 1fr; }
+  .about-stat-row { grid-template-columns: 1fr 1fr; }
+  .about-values { grid-template-columns: 1fr; }
+  .hero-stats { gap: 24px; flex-wrap: wrap; }
+  .hero-actions { flex-direction: column; }
+  .footer { padding: 40px 20px; }
+  .footer-top { flex-direction: column; gap: 30px; }
+  .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
+  .form-row { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="nav" id="nav">
+  <a href="#" class="nav-logo">
+    <img src="company-logo.png" alt="天津金鲁科技" style="height:44px;width:auto;border-radius:10px;">
+    <div>
+      <div class="nav-logo-text">天津金鲁科技</div>
+      <div class="nav-logo-sub">Tianjin Jinlu Technology</div>
+  </a>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#about">关于我们</a></li>
+    <li><a href="#products">核心产品</a></li>
+    <li><a href="#market">市场前景</a></li>
+    <li><a href="#vision">愿景规划</a></li>
+    <li><a href="#contact" class="nav-cta">联系我们</a></li>
+  </ul>
+  <button class="menu-toggle" id="menuToggle" aria-label="菜单">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Hero -->
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-particles" id="particles"></div>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="hero-badge-dot"></span>
+      专注新能源磁材 · 智能配电解决方案
+    </div>
+    <h1>
+      <span>以技术为驱动</span><br>
+      <span class="line2">引领能源变革新时代</span>
+    </h1>
+    <p class="hero-desc">
+      天津金鲁科技成立于2020年，是"电池+智能配电"一站式解决方案领军企业，聚焦锰锌铁氧体与数据中新散热两大核心赛道，致力于成为全球领先的新能源产品解决方案服务商。
+    </p>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num">$183亿</div>
+        <div class="stat-label">全球市场规模</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">$89亿</div>
+        <div class="stat-label">中国市场份额</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">18.5%</div>
+        <div class="stat-label">新能源汽车 CAGR</div>
+      </div>
+    </div>
+    <div class="hero-actions">
+      <a href="#products" class="btn-primary">探索产品 ›</a>
+      <a href="#contact" class="btn-ghost">商务合作</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-card">
+      <div class="hero-card-title">核心业务版图</div>
+      <div class="hex-grid">
+        <div class="hex-item"><span class="hex-icon">🔋</span>动力电池</div>
+        <div class="hex-item"><span class="hex-icon">⚡</span>智能配电</div>
+        <div class="hex-item"><span class="hex-icon">🧲</span>锰锌铁氧体</div>
+        <div class="hex-item"><span class="hex-icon">🔌</span>固态开关</div>
+        <div class="hex-item"><span class="hex-icon">🚗</span>新能源汽车</div>
+        <div class="hex-item"><span class="hex-icon">💾</span>储能电站</div>
+        <div class="hex-item"><span class="hex-icon">🚢</span>电动船舶</div>
+        <div class="hex-item"><span class="hex-icon">🖥️</span>数据中心</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section class="about" id="about">
+  <div class="section-label">01 · About Us</div>
+  <div class="about-grid">
+    <div class="about-text">
+      <h2 class="section-title">关于我们</h2>
+      <p>天津金鲁科技有限公司成立于2020年3月，是一家专注于新能源磁材研发与智能配电解决方案的高新技术企业。公司汇聚华为、力神电池等知名企业及科研院所精英人才，拥有10年以上行业积淀。</p>
+      <p>公司以电池、配电、固态开关、车载滤波器、磁性器件为核心技术，构建了覆盖智能配电箱、固态功率控制器、低温动力电池、定制化连接器、定制化磁性器件等多系列产品矩阵，适配无人车辆、储能电站、电动船舶、新能源汽车等多场景需求。</p>
+      <p>公司已获得GJB9000、ISO9000质量体系认证，以全心全意满足客户需求为己任，为客户提供定制化、高可靠性解决方案。</p>
+      <div class="about-values">
+        <div class="value-card">
+          <div class="value-icon">🎯</div>
+          <div class="value-title">使命</div>
+          <div class="value-desc">以创新技术赋能能源变革，用优质产品护航产业升级</div>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">🚀</div>
+          <div class="value-title">愿景</div>
+          <div class="value-desc">成为全球领先的新能源产品解决方案服务商</div>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">💎</div>
+          <div class="value-title">诚信</div>
+          <div class="value-desc">以诚信筑牢合作根基，以专业破解技术难题</div>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">🤝</div>
+          <div class="value-title">共赢</div>
+          <div class="value-desc">以高效响应市场需求，以共赢共创产业生态</div>
+        </div>
+      </div>
+    </div>
+    <div class="about-visual">
+      <div class="about-img-box">
+        <div class="about-company-name">天津金鲁科技有限公司</div>
+        <div class="about-tagline">新能源磁材 · 智能配电 · 一站式解决方案</div>
+        <ul class="about-highlights">
+          <li>成立于2020年3月，总部位于天津</li>
+          <li>核心团队来自华为、力神电池等知名企业</li>
+          <li>拥有10年以上行业技术积淀</li>
+          <li>GJB9000、ISO9000质量体系认证</li>
+          <li>布局多区域中心与办事处</li>
+          <li>全心全意满足客户需求为己任</li>
+          <li>技术为本，坚守创新驱动发展</li>
+          <li>客户至上，聚焦需求精准赋能</li>
+        </ul>
+        <div class="about-stat-row">
+          <div class="about-stat">
+            <div class="about-stat-num">2020</div>
+            <div class="about-stat-label">成立年份</div>
+          </div>
+          <div class="about-stat">
+            <div class="about-stat-num">10+</div>
+            <div class="about-stat-label">行业经验</div>
+          </div>
+          <div class="about-stat">
+            <div class="about-stat-num">50+</div>
+            <div class="about-stat-label">单车磁芯用量</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Products -->
+<section class="products" id="products">
+  <div class="section-label">02 · Core Products</div>
+  <div class="section-header">
+    <h2 class="section-title">核心产品矩阵</h2>
+    <p class="section-desc">聚焦锰锌铁氧体磁芯在新能源汽车及数据中心散热领域的深度应用，构建覆盖多电压平台、多场景的产品体系。</p>
+  </div>
+  <div class="products-grid">
+    <div class="product-card">
+      <div class="product-visual bg-1">
+        <span class="product-visual-icon">🔌</span>
+      </div>
+      <div class="product-body">
+        <span class="product-tag">新能源汽车</span>
+        <h3 class="product-title">OBC 磁芯解决方案</h3>
+        <p class="product-desc">为车载充电系统（OBC）提供高性能锰锌铁氧体磁芯，支撑800V高压快充，实现AC-DC高效转换。</p>
+        <ul class="product-features">
+          <li>适配 800V 高压平台</li>
+          <li>工作频率 100kHz - 500kHz</li>
+          <li>Pcv≤220kW/m³（100kHz/200mT）</li>
+          <li>单车用量 15-22 个</li>
+        </ul>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-visual bg-2">
+        <span class="product-visual-icon">⚡</span>
+      </div>
+      <div class="product-body">
+        <span class="product-tag">新能源汽车</span>
+        <h3 class="product-title">电驱磁芯系统</h3>
+        <p class="product-desc">适配SiC器件高频环境，具备高饱和磁通密度与低铁损特性，保障动力系统高效稳定传输。</p>
+        <ul class="product-features">
+          <li>饱和磁通密度 ≥550mT</li>
+          <li>20kHz-100kHz 铁损降低 15%-20%</li>
+          <li>支持 SiC 器件 MHz 级高频</li>
+          <li>10万次振动循环测试通过</li>
+        </ul>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-visual bg-3">
+        <span class="product-visual-icon">📡</span>
+      </div>
+      <div class="product-body">
+        <span class="product-tag">新能源汽车</span>
+        <h3 class="product-title">无线充电磁芯</h3>
+        <p class="product-desc">支持高磁导率（μi≥10000@1MHz）与薄型化设计，提升无线传电效率与空间利用率，适配高端车型快充需求。</p>
+        <ul class="product-features">
+          <li>μi≥10000@1MHz</li>
+          <li>厚度 2-5mm，抑制漏磁</li>
+          <li>支持 100kW+ 无线快充</li>
+          <li>La₂O₃+Co₂O₃ 复合掺杂技术</li>
+        </ul>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-visual bg-4">
+        <span class="product-visual-icon">🧠</span>
+      </div>
+      <div class="product-body">
+        <span class="product-tag">新能源汽车</span>
+        <h3 class="product-title">BMS 磁芯方案</h3>
+        <p class="product-desc">确保电池管理精度，滤除高压电磁干扰，保障电池SOC精度与高压电路安全稳定运行。</p>
+        <ul class="product-features">
+          <li>满足 IEC 61000-4-6 标准</li>
+          <li>高磁导率与强抗干扰能力</li>
+          <li>适配 400V/800V 多电压平台</li>
+          <li>高精度电池 SOC 监测</li>
+        </ul>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-visual bg-5">
+        <span class="product-visual-icon">🖥️</span>
+      </div>
+      <div class="product-body">
+        <span class="product-tag">数据中心</span>
+        <h3 class="product-title">AI 数据中心假负载</h3>
+        <p class="product-desc">模块化水冷假负载解决方案，为AI服务器、CDU散热效率验证、冷板/浸没式冷却系统兼容性测试提供精准热负载模拟。</p>
+        <ul class="product-features">
+          <li>功率覆盖 10-240kW</li>
+          <li>控温精度 ±0.5°C</li>
+          <li>温度波动 ≤±0.3°C</li>
+          <li>2U 12kW 高密度热源</li>
+        </ul>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-visual bg-6">
+        <span class="product-visual-icon">🔥</span>
+      </div>
+      <div class="product-body">
+        <span class="product-tag">数据中心</span>
+        <h3 class="product-title">液冷散热测试系统</h3>
+        <p class="product-desc">液冷服务器热验证与CDU测试，模拟真实GPU发热特性，热密度 50W/cm²，接触热阻 <0.05°C/W，显著缩短研发周期。</p>
+        <ul class="product-features">
+          <li>4路独立发热通道</li>
+          <li>RS485/以太网/USB 三接口</li>
+          <li><200ms 保护响应时间</li>
+          <li>72h 满载等效模拟 3 个月老化</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Market -->
+<section class="market" id="market">
+  <div class="section-label">03 · Market Landscape</div>
+  <div class="section-header">
+    <h2 class="section-title">市场前景</h2>
+    <p class="section-desc">锰锌铁氧体全球市场持续高速增长，新能源汽车与数据中心成为双轮驱动，亚太地区占据主导地位。</p>
+  </div>
+  <div class="market-numbers">
+    <div class="market-num-card">
+      <div class="market-big-num">$183<span class="market-unit">亿</span></div>
+      <div class="market-num-label">2025年全球市场规模</div>
+      <div class="market-cagr">CAGR 6.1%</div>
+    </div>
+    <div class="market-num-card">
+      <div class="market-big-num">$89<span class="market-unit">亿</span></div>
+      <div class="market-num-label">2025年中国市场规模</div>
+      <div class="market-cagr">CAGR 7.2%</div>
+    </div>
+    <div class="market-num-card">
+      <div class="market-big-num">36%</div>
+      <div class="market-num-label">新能源汽车占中国市场</div>
+      <div class="market-cagr">CAGR 18.5%</div>
+    </div>
+    <div class="market-num-card">
+      <div class="market-big-num">67%</div>
+      <div class="market-num-label">亚太占全球市场份额</div>
+      <div class="market-cagr">全球制造中心</div>
+    </div>
+  </div>
+  <div class="market-breakdown">
+    <div>
+      <div class="market-section-title">中国市场细分应用（2025年）</div>
+      <ul class="market-bar-list">
+        <li class="market-bar-item">
+          <div class="market-bar-label"><span>新能源汽车</span><span>$32.1亿 · 36%</span></div>
+          <div class="market-bar-track"><div class="market-bar-fill" style="width:100%"></div></div>
+        </li>
+        <li class="market-bar-item">
+          <div class="market-bar-label"><span>消费电子</span><span>$21.4亿 · 24%</span></div>
+          <div class="market-bar-track"><div class="market-bar-fill gold" style="width:67%"></div></div>
+        </li>
+        <li class="market-bar-item">
+          <div class="market-bar-label"><span>光伏储能</span><span>$15.1亿 · 17%</span></div>
+          <div class="market-bar-track"><div class="market-bar-fill purple" style="width:47%"></div></div>
+        </li>
+        <li class="market-bar-item">
+          <div class="market-bar-label"><span>5G通信</span><span>$10.7亿 · 12%</span></div>
+          <div class="market-bar-track"><div class="market-bar-fill green" style="width:33%"></div></div>
+        </li>
+        <li class="market-bar-item">
+          <div class="market-bar-label"><span>工业控制</span><span>$7.1亿 · 8%</span></div>
+          <div class="market-bar-track"><div class="market-bar-fill" style="width:22%"></div></div>
+        </li>
+      </ul>
+    </div>
+    <div>
+      <div class="market-section-title">中日技术差距与替代空间</div>
+      <ul class="market-bar-list">
+        <li class="market-bar-item">
+          <div class="market-bar-label"><span>日系高端市场份额</span><span>70%+</span></div>
+          <div class="market-bar-track"><div class="market-bar-fill" style="width:100%"></div></div>
+        </li>
+        <li class="market-bar-item">
+          <div class="market-bar-label"><span>国产替代空间</span><span>巨大</span></div>
+          <div class="market-bar-track"><div class="market-bar-fill gold" style="width:85%"></div></div>
+        </li>
+        <li class="market-bar-item">
+          <div class="market-bar-label"><span>金鲁2026目标份额</span><span>3%-5%</span></div>
+          <div class="market-bar-track"><div class="market-bar-fill green" style="width:20%"></div></div>
+        </li>
+      </ul>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:20px;margin-top:16px;">
+        <div style="font-size:14px;font-weight:700;margin-bottom:8px;color:var(--gold);">💡 三大创新增长点（2028年预测）</div>
+        <div style="font-size:13px;color:var(--muted);line-height:1.9;">
+          <div>📡 无线快充：<b style="color:#fff">$12亿</b></div>
+          <div>⚙️ 磁集成系统：<b style="color:#fff">$28亿</b></div>
+          <div>🛞 雷达磁芯：<b style="color:#fff">$8亿</b></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section class="contact" id="contact">
+  <div class="section-label">06 · Contact Us</div>
+  <div class="section-header">
+    <h2 class="section-title">商务合作</h2>
+    <p class="section-desc">诚邀车企、储能企业、数据中心集成商及投资机构洽谈合作，共建国产高端磁材生态。</p>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <div class="contact-item">
+        <div class="contact-item-icon">🏢</div>
+        <div>
+          <div class="contact-item-title">公司名称</div>
+          <div class="contact-item-value">天津金鲁科技有限公司</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-icon">📍</div>
+        <div>
+          <div class="contact-item-title">总部地址</div>
+          <div class="contact-item-value">天津滨海高新区华苑产业区海泰南道28号A座4-401-B区</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-icon">📞</div>
+        <div>
+          <div class="contact-item-title">联系电话</div>
+          <div class="contact-item-value">132-1226-8713</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-icon">📧</div>
+        <div>
+          <div class="contact-item-title">商务邮箱</div>
+          <div class="contact-item-value">business@jinlu-tech.com</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-icon">🤝</div>
+        <div>
+          <div class="contact-item-title">合作方向</div>
+          <div class="contact-item-value">技术合作 · 战略投资 · OEM/ODM</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-icon">🏭</div>
+        <div>
+          <div class="contact-item-title">核心业务</div>
+          <div class="contact-item-value">新能源汽车磁芯 · 数据中心散热测试</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-icon">🔬</div>
+        <div>
+          <div class="contact-item-title">质量认证</div>
+          <div class="contact-item-value">GJB9000 · ISO9000 · IATF16949</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-icon">🧾</div>
+        <div>
+          <div class="contact-item-title">统一社会信用代码</div>
+          <div class="contact-item-value">91120102MA7KYM7Y6D</div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form">
+      <h3>发送咨询</h3>
+      <form id="contactForm" onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label>您的姓名 *</label>
+            <input type="text" name="name" placeholder="请输入姓名" required>
+          </div>
+          <div class="form-group">
+            <label>公司名称</label>
+            <input type="text" name="company" placeholder="请输入公司名称">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>联系电话 / 邮箱 *</label>
+          <input type="text" name="contact" placeholder="请输入联系方式" required>
+        </div>
+        <div class="form-group">
+          <label>合作方向</label>
+          <select name="type">
+            <option value="">请选择</option>
+            <option>技术合作</option>
+            <option>战略投资</option>
+            <option>产品采购（新能源汽车磁芯）</option>
+            <option>产品采购（数据中心假负载）</option>
+            <option>OEM/ODM定制</option>
+            <option>其他</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>留言内容</label>
+          <textarea name="message" placeholder="请简要描述您的需求..."></textarea>
+        </div>
+        <button type="submit" class="form-submit">提交咨询 ›</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+        <img src="company-logo.png" alt="天津金鲁科技" style="height:42px;width:auto;border-radius:8px;">
+        <div>
+          <div style="font-size:16px;font-weight:700;">天津金鲁科技有限公司</div>
+          <div style="font-size:11px;color:var(--muted);">Tianjin Jinlu Technology Co., Ltd.</div>
+        </div>
+      </div>
+      <p>以技术为驱动，以创新为引擎，致力于成为全球领先的新能源产品解决方案服务商。</p>
+    </div>
+    <div class="footer-links-group">
+      <h4>产品</h4>
+      <ul>
+        <li><a href="#products">OBC 磁芯</a></li>
+        <li><a href="#products">电驱磁芯</a></li>
+        <li><a href="#products">无线充电磁芯</a></li>
+        <li><a href="#products">数据中心假负载</a></li>
+      </ul>
+    </div>
+    <div class="footer-links-group">
+      <h4>公司</h4>
+      <ul>
+        <li><a href="#about">关于我们</a></li>
+        <li><a href="#vision">企业愿景</a></li>
+        <li><a href="#contact">商务合作</a></li>
+      </ul>
+    </div>
+    <div class="footer-links-group">
+      <h4>市场</h4>
+      <ul>
+        <li><a href="#market">市场规模</a></li>
+        <li><a href="#market">国产替代</a></li>
+        <li><a href="#market">增长动力</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2020-2026 天津金鲁科技有限公司 版权所有</span>
+    <span>津ICP备202003XXXX号 | <a href="#">隐私政策</a> | <a href="#">使用条款</a></span>
+  </div>
+</footer>
+
+<script>
+// Particles
+const particleContainer = document.getElementById('particles');
+if (particleContainer) {
+  for (let i = 0; i < 30; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    p.style.left = Math.random() * 100 + '%';
+    p.style.animationDelay = Math.random() * 6 + 's';
+    p.style.animationDuration = (4 + Math.random() * 4) + 's';
+    p.style.width = (2 + Math.random() * 2) + 'px';
+    p.style.height = p.style.width;
+    particleContainer.appendChild(p);
+  }
+}
+
+// Nav scroll
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 50);
+});
+
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+
+// Counter animation
+function animateCounters() {
+  document.querySelectorAll('.stat-num, .market-big-num, .about-stat-num').forEach(el => {
+    const text = el.textContent;
+    if (el.dataset.animated) return;
+    el.dataset.animated = 'true';
+    // Simple pulse on scroll
+  });
+}
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.transform = 'scale(1.05)';
+      setTimeout(() => { entry.target.style.transform = 'scale(1)'; }, 300);
+    }
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('.stat-item, .market-num-card').forEach(el => counterObserver.observe(el));
+
+// Form submit
+function handleSubmit(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('.form-submit');
+  btn.textContent = '提交中...';
+  btn.disabled = true;
+  setTimeout(() => {
+    btn.textContent = '✓ 提交成功！我们会尽快与您联系';
+    btn.style.background = 'linear-gradient(135deg, #2ecc71, #27ae60)';
+    setTimeout(() => {
+      btn.textContent = '提交咨询 ›';
+      btn.disabled = false;
+      btn.style.background = '';
+      e.target.reset();
+    }, 3000);
+  }, 1500);
+}
+
+// Mobile menu
+const menuToggle = document.getElementById('menuToggle');
+const navLinks = document.querySelector('.nav-links');
+if (menuToggle) {
+  menuToggle.addEventListener('click', () => {
+    navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+    navLinks.style.flexDirection = 'column';
+    navLinks.style.position = 'absolute';
+    navLinks.style.top = '64px';
+    navLinks.style.left = '0';
+    navLinks.style.right = '0';
+    navLinks.style.background = 'rgba(10,22,40,0.97)';
+    navLinks.style.padding = '20px';
+    navLinks.style.borderBottom = '1px solid var(--border)';
+  });
+}
+</script>
+</body>
+</html>
