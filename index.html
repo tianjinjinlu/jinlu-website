@@ -303,6 +303,78 @@ section { padding: 100px 60px; position: relative; }
   -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
 }
 .about-tagline { font-size: 15px; color: var(--muted); margin-bottom: 24px; }
+/* 公司动态滚动 */
+.news-ticker-wrap {
+  margin: 32px 0 0 0;
+  border: 1px solid rgba(0,212,255,0.2);
+  border-radius: 12px;
+  overflow: hidden;
+  background: rgba(0,212,255,0.03);
+}
+.news-ticker-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: linear-gradient(90deg, rgba(0,212,255,0.15), rgba(0,119,255,0.08));
+  border-bottom: 1px solid rgba(0,212,255,0.15);
+  font-size: 13px;
+  font-weight: 600;
+  color: #00d4ff;
+  letter-spacing: 1px;
+}
+.news-ticker-header span { font-size: 16px; }
+.news-ticker-track {
+  height: 200px;
+  overflow: hidden;
+  padding: 0 20px;
+  position: relative;
+}
+.news-ticker-track:hover .news-ticker-inner { animation-play-state: paused; }
+.news-ticker-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  animation: tickerScroll 20s linear infinite;
+}
+@keyframes tickerScroll {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
+}
+.news-item {
+  padding: 14px 4px;
+  border-bottom: 1px solid rgba(0,212,255,0.07);
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+.news-item:last-child { border-bottom: none; }
+.news-date {
+  flex-shrink: 0;
+  font-size: 12px;
+  color: #00d4ff;
+  font-weight: 500;
+  min-width: 70px;
+  opacity: 0.8;
+}
+.news-text {
+  font-size: 14px;
+  color: #c8d8e8;
+  line-height: 1.6;
+}
+.news-tag {
+  display: inline-block;
+  font-size: 11px;
+  padding: 1px 7px;
+  border-radius: 4px;
+  margin-right: 6px;
+  font-weight: 500;
+}
+.news-tag-product  { background: rgba(0,212,255,0.15); color: #00d4ff; }
+.news-tag-tech     { background: rgba(0,119,255,0.2); color: #66b0ff; }
+.news-tag-honor    { background: rgba(245,166,35,0.2); color: #f5a623; }
+.news-tag-event    { background: rgba(0,200,100,0.15); color: #00c864; }
+
 .about-highlights { list-style: none; }
 .about-highlights li {
   padding: 12px 0;
@@ -849,6 +921,74 @@ section { padding: 100px 60px; position: relative; }
       </div>
     </div>
   </div>
+
+    <!-- 公司动态滚动模块 -->
+    <div class="news-ticker-wrap">
+      <div class="news-ticker-header">
+        <span>📰</span> 公司动态
+      </div>
+      <div class="news-ticker-track">
+        <div class="news-ticker-inner">
+          <div class="news-item">
+            <span class="news-date">2026.04</span>
+            <span class="news-text"><span class="news-tag news-tag-product">产品</span>800V车载磁芯通过头部车企认证，完成量产导入</span>
+          </div>
+          <div class="news-item">
+            <span class="news-date">2026.03</span>
+            <span class="news-text"><span class="news-tag news-tag-tech">技术</span>AI数据中心12kW/2U假负载完成可靠性验证</span>
+          </div>
+          <div class="news-item">
+            <span class="news-date">2026.02</span>
+            <span class="news-text"><span class="news-tag news-tag-honor">资质</span>GJB9001质量体系年审通过</span>
+          </div>
+          <div class="news-item">
+            <span class="news-date">2026.01</span>
+            <span class="news-text"><span class="news-tag news-tag-event">战略</span>与某头部储能企业达成战略合作</span>
+          </div>
+          <div class="news-item">
+            <span class="news-date">2025.12</span>
+            <span class="news-text"><span class="news-tag news-tag-product">产品</span>OBC磁芯累计交付突破200万颗</span>
+          </div>
+          <div class="news-item">
+            <span class="news-date">2025.11</span>
+            <span class="news-text"><span class="news-tag news-tag-tech">技术</span>获评国家高新技术企业认定</span>
+          </div>
+          <div class="news-item">
+            <span class="news-date">2025.09</span>
+            <span class="news-text"><span class="news-tag news-tag-event">展会</span>亮相2025世界新能源汽车大会</span>
+          </div>
+          <!-- 重复一次实现无缝滚动 -->
+          <div class="news-item">
+            <span class="news-date">2026.04</span>
+            <span class="news-text"><span class="news-tag news-tag-product">产品</span>800V车载磁芯通过头部车企认证，完成量产导入</span>
+          </div>
+          <div class="news-item">
+            <span class="news-date">2026.03</span>
+            <span class="news-text"><span class="news-tag news-tag-tech">技术</span>AI数据中心12kW/2U假负载完成可靠性验证</span>
+          </div>
+          <div class="news-item">
+            <span class="news-date">2026.02</span>
+            <span class="news-text"><span class="news-tag news-tag-honor">资质</span>GJB9001质量体系年审通过</span>
+          </div>
+          <div class="news-item">
+            <span class="news-date">2026.01</span>
+            <span class="news-text"><span class="news-tag news-tag-event">战略</span>与某头部储能企业达成战略合作</span>
+          </div>
+          <div class="news-item">
+            <span class="news-date">2025.12</span>
+            <span class="news-text"><span class="news-tag news-tag-product">产品</span>OBC磁芯累计交付突破200万颗</span>
+          </div>
+          <div class="news-item">
+            <span class="news-date">2025.11</span>
+            <span class="news-text"><span class="news-tag news-tag-tech">技术</span>获评国家高新技术企业认定</span>
+          </div>
+          <div class="news-item">
+            <span class="news-date">2025.09</span>
+            <span class="news-text"><span class="news-tag news-tag-event">展会</span>亮相2025世界新能源汽车大会</span>
+          </div>
+        </div>
+      </div>
+    </div>
 </section>
 
 <!-- Products -->
