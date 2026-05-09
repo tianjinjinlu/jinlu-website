@@ -225,7 +225,14 @@ body {
   padding: 36px;
   backdrop-filter: blur(20px);
 }
-.hero-card-title { font-size: 13px; color: var(--accent); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; }
+.hero-card-title {
+  color: #fff !important;
+  font-weight: 700;
+  font-size: 28px;
+
+  color: #fff;
+  font-weight: 700;
+  font-size: 26px; font-size: 13px; color: var(--accent); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; }
 .hex-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
 .hex-item {
   aspect-ratio: 1;
@@ -592,6 +599,14 @@ section { padding: 100px 60px; position: relative; }
   text-align: center;
 }
 .vision-grid {
+  display: flex;
+  flex-direction: column;
+
+  flex-direction: column;
+  gap: 16px;
+  max-width: 700px;
+  margin: 0 auto;
+
   display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
   max-width: 1100px; margin: 0 auto;
 }
@@ -610,7 +625,11 @@ section { padding: 100px 60px; position: relative; }
 }
 .vision-icon { font-size: 56px; margin-bottom: 20px; }
 .vision-title { font-size: 22px; font-weight: 800; margin-bottom: 12px; }
-.vision-desc { font-size: 14px; color: var(--text2); line-height: 1.7; }
+.vision-desc {
+  font-size: 13px;
+  line-height: 1.5;
+  color: #555;
+ font-size: 14px; color: var(--text2); line-height: 1.7; }
 
 /* Roadmap */
 .roadmap { background: var(--primary); }
@@ -775,7 +794,15 @@ section { padding: 100px 60px; position: relative; }
   .about-grid { grid-template-columns: 1fr; }
   .tech-grid { grid-template-columns: 1fr; }
   .market-numbers { grid-template-columns: repeat(2, 1fr); }
-  .vision-grid { grid-template-columns: 1fr 1fr; }
+  .vision-grid {
+  display: flex;
+  flex-direction: column;
+
+  flex-direction: column;
+  gap: 16px;
+  max-width: 700px;
+  margin: 0 auto;
+ grid-template-columns: 1fr 1fr; }
   .contact-grid { grid-template-columns: 1fr; }
   .hero-visual { display: none; }
 }
@@ -786,7 +813,15 @@ section { padding: 100px 60px; position: relative; }
   .hero { padding: 0 20px; }
   .products-grid { grid-template-columns: 1fr; }
   .market-breakdown { grid-template-columns: 1fr; }
-  .vision-grid { grid-template-columns: 1fr; }
+  .vision-grid {
+  display: flex;
+  flex-direction: column;
+
+  flex-direction: column;
+  gap: 16px;
+  max-width: 700px;
+  margin: 0 auto;
+ grid-template-columns: 1fr; }
   .about-stat-row { grid-template-columns: 1fr 1fr; }
   .about-values { grid-template-columns: 1fr; }
   .hero-stats { gap: 16px; flex-wrap: wrap; }
@@ -1105,9 +1140,9 @@ section { padding: 100px 60px; position: relative; }
 
 <!-- Vision -->
 <section class="vision" id="vision">
-  <div class="section-label">03 · Vision</div>
-  <div class="section-header">
-    <h2 class="section-title">企业愿景</h2>
+  <div class="section-label" style="text-align:left; margin-left:0;">03 · Vision</div>
+  <div class="section-header" style="text-align:left;">
+    <h2 class="section-title" style="text-align:left;">企业愿景</h2>
     <p class="section-desc">以技术创新驱动产业变革，开创国产磁材新纪元，打破日系垄断，成为全球新能源汽车高端磁芯领导者。</p>
   </div>
   <div class="vision-grid">
